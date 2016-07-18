@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>贪吃蛇小游戏</title>
+  <style type="text/css">
+    #container {
+      width: 500px;
+      margin: auto;
+      font-size: 0px;
+      background-image: url(./image.png);
+      border: solid 8px black
+    }
+
+    #container div{
+      width: 50px;
+      height: 50px;
+      display: inline-block;
+      border: solid 1px gray;
+      box-sizing: border-box;
+    }
+
+    #container .snake {
+      background: white;
+    }
+
+    #container .snakehead {
+      background: red;
+    }
+
+    #container .fruit {
+      background: yellow;
+    }
+
+    #score {
+      text-align: center;
+      font-size: 60px;
+    }
+
+  </style>
+</head>
+<body>
+  <h1 id="score"></h1>
+  <p style="text-align: center">（按“W"、”S“、”A“、”D“ 或者 “↑”，“↓”，“←”，“→”操控小蛇）</p>
+  <div id="container">
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
