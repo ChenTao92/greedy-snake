@@ -6,3 +6,4 @@
 - “碰壁”后游戏自动结束
 - 实现防止“掉头”的功能
 - 有记分功能
+***[点此进入游戏](https://chentao92.github.io/greedy-snake)***
