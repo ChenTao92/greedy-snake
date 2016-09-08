@@ -1,6 +1,5 @@
 body {
   background: url(./background.jpg);
-  height: 100vh;
   background-size: cover;
 }
     
@@ -35,25 +34,49 @@ body {
 }
 
 #score {
+  margin: 0;
+  padding-top: 15px;
+  font-family: Comic Sans MS;
   color: #FFF;
   text-align: center;
-  font-size: 60px;
+  font-size: 50px;
 }
 
 #tips {
+  margin: 0;
+  padding: 20px;
+  font-family: Comic Sans MS;
   text-align: center;
   color: #FFF;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 #start {
-  width: 200px;
+  background-color: #A4CC00;
+  width: 130px;
+  height: 60px;
+  font-size: 35px;
+  font-family: Comic Sans MS;
+  color: #FFF;
   position: absolute;
-  right: -280px;
+  right: -250px;
   top: 250px; 
-  border-radius: 100px;
+  border-radius: 10px;
+  text-shadow: 3px 3px 3px gray;
 }
 
 #start:hover {
+  width: 140px;
+  height: 70px;
+  font-size: 45px;
+  color: red;
+  position: absolute;
+  right: -255px;
+  top: 245px; 
+  text-shadow: 1px 1px 1px gray;
   cursor: pointer;
+}
+
+#start:focus{
+  outline: 0;
 }

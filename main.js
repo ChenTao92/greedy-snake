@@ -46,7 +46,7 @@ start.addEventListener("click", function(evt) {
 
   function mainLoop() {
     var snakeHead = snake.positions[0]
-    // 判断是否吃到果实 并 吃掉果实后增长蛇身长度
+    // 判断是否吃到果实，并在吃掉果实后增加蛇身长度
     if(snakeHead.x === snake.fruit.x && snakeHead.y === snake.fruit.y) {
       var lastBody = snake.positions[snake.positions.length - 1]
       var newBody = {}
@@ -70,7 +70,6 @@ start.addEventListener("click", function(evt) {
       snake.fruit.x = Math.floor(Math.random() * width)
       snake.fruit.y = Math.floor(Math.random() * height)
     }
-
 
     var lastPosX = snake.positions[0].x
     var lastPosY = snake.positions[0].y
