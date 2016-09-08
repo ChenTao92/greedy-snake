@@ -1,5 +1,5 @@
 body {
-  background: url(./background.jpeg);
+  background: url(./background.jpg);
   height: 100vh;
   background-size: cover;
 }
@@ -9,7 +9,7 @@ body {
   margin: auto;
   font-size: 0px;
   border: solid 8px black;
-  background-image: url(./snake.png);
+  background-image: url(./snake.jpg);
   background-size: cover;
   position: relative;
 }
