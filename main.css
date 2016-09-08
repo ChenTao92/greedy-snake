@@ -1,0 +1,59 @@
+body {
+  background: url(./background.jpeg);
+  height: 100vh;
+  background-size: cover;
+}
+    
+#container {
+  width: 500px;
+  margin: auto;
+  font-size: 0px;
+  border: solid 8px black;
+  background-image: url(./snake.png);
+  background-size: cover;
+  position: relative;
+}
+
+#container div{
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  border: solid 1px gray;
+  box-sizing: border-box;
+}
+
+#container .snake {
+  background: purple;
+}
+
+#container .snakehead {
+  background: red;
+}
+
+#container .fruit {
+  background: yellow;
+}
+
+#score {
+  color: #FFF;
+  text-align: center;
+  font-size: 60px;
+}
+
+#tips {
+  text-align: center;
+  color: #FFF;
+  font-size: 20px;
+}
+
+#start {
+  width: 200px;
+  position: absolute;
+  right: -280px;
+  top: 250px; 
+  border-radius: 100px;
+}
+
+#start:hover {
+  cursor: pointer;
+}
