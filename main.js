@@ -18,7 +18,7 @@ start.addEventListener("click", function(evt) {
 
   if (isStart) {
 
-    var snakeheadStyle = "url(./pictures/snakehead-right.png)"
+    var snakeheadStyle = "url(./pictures/snakehead-right.png)"//蛇运动方向不同时，蛇头样式应当不同
 
     isStart = false//避免没有触发死亡条件时，后续click事件触发新的mainLoop循环
 
@@ -27,6 +27,15 @@ start.addEventListener("click", function(evt) {
       direction: "R",
       fruit: {x: Math.floor(Math.random()*10), y: Math.floor(Math.random()*10)},
     }
+
+    // 此处用来保证随机生成的果实和蛇头的坐标不会相同
+    while (snake.fruit.x === snake.positions[0].x && snake.fruit.y === snake.positions[0].y) {            
+      snake.fruit = {
+        x: Math.floor(Math.random()*width), 
+        y: Math.floor(Math.random()*height)
+      }
+    }
+
 
     function getSquareByPos(pos) {
       var index = pos.y * width + pos.x
@@ -80,8 +89,23 @@ start.addEventListener("click", function(evt) {
           newBody.x = lastBody.x
         }
         snake.positions.push(newBody)
-        snake.fruit.x = Math.floor(Math.random() * width)
-        snake.fruit.y = Math.floor(Math.random() * height)
+
+
+        //保证重新生成fruit时，避免fruit恰好出现在蛇头或蛇身处
+        function getNewFruit() {
+          snake.positions.forEach(function(pos) {
+            if(snake.fruit.x === pos.x && snake.fruit.y === pos.y) {           
+              snake.fruit = {
+                x: Math.floor(Math.random()*width), 
+                y: Math.floor(Math.random()*height)
+              }
+              getNewFruit()
+            }
+          })
+        }
+        getNewFruit()
+
+
       }
 
       var lastPosX = snake.positions[0].x
@@ -173,9 +197,7 @@ start.addEventListener("click", function(evt) {
         if(isValid) {
           snake.direction = "U"
           if(!isDead) { 
-            console.log("sssssss")
             snakeheadStyle = "url(./pictures/snakehead-up.png)"
-            snakehead[0].style.backgroundImage = snakeheadStyle
           }
         }
       }
@@ -193,7 +215,6 @@ start.addEventListener("click", function(evt) {
           snake.direction = "D"
           if(!isDead) {
             snakeheadStyle = "url(./pictures/snakehead-down.png)"
-            snakehead[0].style.backgroundImage = snakeheadStyle
           }
         }
       }
@@ -211,7 +232,6 @@ start.addEventListener("click", function(evt) {
           snake.direction = "L"
           if(!isDead) {
             snakeheadStyle = "url(./pictures/snakehead-left.png)"
-            snakehead[0].style.backgroundImage = snakeheadStyle
           }
         }
       }
@@ -229,7 +249,6 @@ start.addEventListener("click", function(evt) {
           snake.direction = "R"
           if(!isDead) {
             snakeheadStyle = "url(./pictures/snakehead-right.png)"
-            snakehead[0].style.backgroundImage = snakeheadStyle
           }
         }
       }
