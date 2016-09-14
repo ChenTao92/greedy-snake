@@ -19,7 +19,7 @@ start.addEventListener("click", function(evt) {
   if (isStart) {
 
     var snakeheadStyle = "url(./pictures/snakehead-right.png)"
-    
+
     isStart = false//避免没有触发死亡条件时，后续click事件触发新的mainLoop循环
 
     var snake = {
@@ -54,6 +54,8 @@ start.addEventListener("click", function(evt) {
       var score = "score:" +((snake.positions.length - 1) * 10)
       h1.innerText = score
     }
+
+    var isDead = false
 
     function mainLoop() {
       var snakeHead = snake.positions[0]
@@ -132,7 +134,7 @@ start.addEventListener("click", function(evt) {
 
       // 判断是否触发死亡条件
       //判断是否撞墙
-      var isDead = false
+
       if(snakeHead.x < 0 || snakeHead.x >= width) {
         isDead = true
       }
@@ -170,8 +172,11 @@ start.addEventListener("click", function(evt) {
         })
         if(isValid) {
           snake.direction = "U"
-          snakeheadStyle = "url(./pictures/snakehead-up.png)"
-          snakehead[0].style.backgroundImage = snakeheadStyle
+          if(!isDead) { 
+            console.log("sssssss")
+            snakeheadStyle = "url(./pictures/snakehead-up.png)"
+            snakehead[0].style.backgroundImage = snakeheadStyle
+          }
         }
       }
       // down
@@ -186,8 +191,10 @@ start.addEventListener("click", function(evt) {
         })
         if(isValid) {
           snake.direction = "D"
-          snakeheadStyle = "url(./pictures/snakehead-down.png)"
-          snakehead[0].style.backgroundImage = snakeheadStyle
+          if(!isDead) {
+            snakeheadStyle = "url(./pictures/snakehead-down.png)"
+            snakehead[0].style.backgroundImage = snakeheadStyle
+          }
         }
       }
       // left
@@ -202,8 +209,10 @@ start.addEventListener("click", function(evt) {
         })
         if(isValid) {
           snake.direction = "L"
-          snakeheadStyle = "url(./pictures/snakehead-left.png)"
-          snakehead[0].style.backgroundImage = snakeheadStyle
+          if(!isDead) {
+            snakeheadStyle = "url(./pictures/snakehead-left.png)"
+            snakehead[0].style.backgroundImage = snakeheadStyle
+          }
         }
       }
       // right
@@ -214,14 +223,16 @@ start.addEventListener("click", function(evt) {
         snake.positions.slice(1).forEach(function(pos) {
           if(pos.x === newPosX && pos.y === newPosY) {
             isValid = false
+          }
+        })
+        if(isValid) {
+          snake.direction = "R"
+          if(!isDead) {
+            snakeheadStyle = "url(./pictures/snakehead-right.png)"
+            snakehead[0].style.backgroundImage = snakeheadStyle
+          }
         }
-      })
-      if(isValid) {
-        snake.direction = "R"
-        snakeheadStyle = "url(./pictures/snakehead-right.png)"
-        snakehead[0].style.backgroundImage = snakeheadStyle
       }
-    }
   })
 
     getScore()
