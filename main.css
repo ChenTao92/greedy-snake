@@ -1,5 +1,5 @@
 body {
-  background: url(./background.jpg);
+  background: url(./pictures/background.jpg);
   background-size: cover;
 }
     
@@ -8,7 +8,7 @@ body {
   margin: auto;
   font-size: 0px;
   border: solid 8px black;
-  background-image: url(./snake.jpg);
+  background-image: url(./pictures/snake.jpg);
   background-size: cover;
   position: relative;
 }
@@ -22,15 +22,11 @@ body {
 }
 
 #container .snake {
-  background: purple;
-}
-
-#container .snakehead {
-  background: red;
+  background-image: url(./pictures/snakebody.png);
 }
 
 #container .fruit {
-  background: yellow;
+  background-image: url(./pictures/fruit.png);
 }
 
 #score {

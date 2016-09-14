@@ -2,6 +2,8 @@ var width = 10
 var height = 10
 var container = document.getElementById("container")
 var start = document.getElementById("start")
+var snakehead = document.getElementsByClassName("snakehead")
+var snakeheadStyle = "url(./pictures/snakehead-right.png)"
 
 for(var i = 0; i < width * height; i++) {
   var div = document.createElement("div")
@@ -16,7 +18,7 @@ var isStart = true//用于控制click状态是否有效
 start.addEventListener("click", function(evt) {
 
   if (isStart) {
-    
+
     isStart = false//避免没有触发死亡条件时，后续click事件触发新的mainLoop循环
 
     var snake = {
@@ -34,6 +36,7 @@ start.addEventListener("click", function(evt) {
       var divs = document.querySelectorAll("#container div")
       for(var i = 0; i < divs.length; i++) {
         divs[i].className = ""//每次循环清除掉之前的记录
+        divs[i].style.backgroundImage = ""//清除掉上一帧蛇所在位置的样式
       }
 
       snake.positions.forEach(function(pos) {
@@ -41,9 +44,10 @@ start.addEventListener("click", function(evt) {
       })
       getSquareByPos(snake.positions[0]).className = "snakehead"
 
+      snakehead[0].style.backgroundImage = snakeheadStyle
+
       getSquareByPos(snake.fruit).className = "fruit"
     }
-
 
     function getScore() {
       var score = "score:" +((snake.positions.length - 1) * 10)
@@ -165,6 +169,8 @@ start.addEventListener("click", function(evt) {
         })
         if(isValid) {
           snake.direction = "U"
+          snakeheadStyle = "url(./pictures/snakehead-up.png)"
+          snakehead[0].style.backgroundImage = snakeheadStyle
         }
       }
       // down
@@ -179,6 +185,8 @@ start.addEventListener("click", function(evt) {
         })
         if(isValid) {
           snake.direction = "D"
+          snakeheadStyle = "url(./pictures/snakehead-down.png)"
+          snakehead[0].style.backgroundImage = snakeheadStyle
         }
       }
       // left
@@ -193,6 +201,8 @@ start.addEventListener("click", function(evt) {
         })
         if(isValid) {
           snake.direction = "L"
+          snakeheadStyle = "url(./pictures/snakehead-left.png)"
+          snakehead[0].style.backgroundImage = snakeheadStyle
         }
       }
       // right
@@ -207,6 +217,8 @@ start.addEventListener("click", function(evt) {
       })
       if(isValid) {
         snake.direction = "R"
+        snakeheadStyle = "url(./pictures/snakehead-right.png)"
+        snakehead[0].style.backgroundImage = snakeheadStyle
       }
     }
   })
