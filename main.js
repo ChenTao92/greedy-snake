@@ -3,7 +3,6 @@ var height = 10
 var container = document.getElementById("container")
 var start = document.getElementById("start")
 var snakehead = document.getElementsByClassName("snakehead")
-var snakeheadStyle = "url(./pictures/snakehead-right.png)"
 
 for(var i = 0; i < width * height; i++) {
   var div = document.createElement("div")
@@ -19,6 +18,8 @@ start.addEventListener("click", function(evt) {
 
   if (isStart) {
 
+    var snakeheadStyle = "url(./pictures/snakehead-right.png)"
+    
     isStart = false//避免没有触发死亡条件时，后续click事件触发新的mainLoop循环
 
     var snake = {
