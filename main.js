@@ -3,6 +3,7 @@ var height = 10
 var container = document.getElementById("container")
 var start = document.getElementById("start")
 var snakehead = document.getElementsByClassName("snakehead")
+var gameover = document.getElementById("gameover")
 
 for(var i = 0; i < width * height; i++) {
   var div = document.createElement("div")
@@ -12,13 +13,13 @@ for(var i = 0; i < width * height; i++) {
 var h1 = document.getElementById("score")
 h1.innerText = "score:0"
 
-
 var isStart = true//用于控制click状态是否有效
 start.addEventListener("click", function(evt) {
 
   if (isStart) {
 
     var snakeheadStyle = "url(./pictures/snakehead-right.png)"//蛇运动方向不同时，蛇头样式应当不同
+    gameover.innerText = ""
 
     isStart = false//避免没有触发死亡条件时，后续click事件触发新的mainLoop循环
 
@@ -174,7 +175,7 @@ start.addEventListener("click", function(evt) {
 
       if(isDead) {
         clearInterval(interval)// jump out of mainLoop
-        h1.innerText += " Game Over！"
+        gameover.innerText = " Game Over！"
         isStart = true
         return
       } else {
