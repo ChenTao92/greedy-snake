@@ -2,7 +2,6 @@ var width = 10
 var height = 10
 var container = document.getElementById("container")
 var start = document.getElementById("start")
-var snakehead = document.getElementsByClassName("snakehead")
 var gameover = document.getElementById("gameover")
 
 for(var i = 0; i < width * height; i++) {
@@ -53,9 +52,8 @@ start.addEventListener("click", function(evt) {
       snake.positions.forEach(function(pos) {
         getSquareByPos(pos).className = "snake"
       })
-      getSquareByPos(snake.positions[0]).className = "snakehead"
 
-      snakehead[0].style.backgroundImage = snakeheadStyle
+      getSquareByPos(snake.positions[0]).style.backgroundImage = snakeheadStyle
 
       getSquareByPos(snake.fruit).className = "fruit"
     }
