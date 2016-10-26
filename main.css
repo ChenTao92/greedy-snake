@@ -25,7 +25,8 @@ main {
   width: 450px;
   margin: auto;
   font-size: 0px;
-  border: solid 8px black;
+  border: solid 7px black;
+  border-radius: 11px;
   background-image: url(./pictures/snake.jpg);
   background-size: cover;
   position: relative;
